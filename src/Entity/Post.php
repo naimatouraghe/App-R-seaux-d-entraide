@@ -18,7 +18,7 @@ class Post
     #[ORM\Column(type: 'string', length: 255)]
     private $question;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text')]
     private $content;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
@@ -33,6 +33,7 @@ class Post
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

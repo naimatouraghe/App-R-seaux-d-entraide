@@ -1,8 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil
+{% block title %}Hello HomeController!
 {% endblock %}
 
 {% block body %}
-	Accueil
-{% endblock %}
+			<div class="s-post-summary--content">
+				{% for results in result %}
+					<h3 class="s-post-summary--content-title">
+						<a href="./post{id}" class="s-link">{{ results.question}}</a>
+					</h3>
+
+					<div class="s-post-summary--content-excerpt">
+						{{ results.content}}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<section class="d-flex w100 lg:fd-column-reverse ai-start gs16">
+			<div class="flex--item w70 lg:w100 bg-white bar-sm p24 ba bc-black-075 fl-shrink0 js-post-title-section" id="post-title">
+				<div class="d-flex gs4 gsy fd-column js-stacks-validation form-wrapper" id="form">
+					{{ form_start(questionForm) }}
+					{{ form_row(questionForm.question) }}
+					{{ form_row(questionForm.content) }}
+					<button type="submit" class="btn">Send</button>
+					{{ form_end(questionForm) }}
+				</div>
+
+			</div>
+
+		</section>
+	{% endblock %}
+
