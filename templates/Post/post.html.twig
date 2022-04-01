@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+			<div class="s-post-summary--content">
+            <h3 class="s-post-summary--content-title">
+				{{post.question}}
+            </h3>
+                {{post.content}}
+			</div>
+
+            <div class="s-comment-summary--">
+                {% for comment in comment %}
+                    {{comment.content}}
+                {% endfor %}
+            </div>
+	
+		<h3>Commentaires</h3>
+		<div class='comments_list'>
+				<div class='commentForm'>
+					<form align='center' action='' method='POST'>
+						<input type='text' required name="comment" placeholder='Content'><br>
+						<button type='submit'>Envoyer</button>
+					</form>
+				</div>
+		</div>
+	{% endblock %}
+
+
