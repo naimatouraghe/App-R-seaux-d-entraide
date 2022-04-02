@@ -9,26 +9,32 @@
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="{{path('app_home')}}">Home</a>
 				</li>
-
-			</ul>
-
-			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				{% if app.user %}
-					<li class="nav-item">
-						<a class="nav-link" href="{{path('app_profil')}}">Mon compte</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{path('app_logout')}}">Me déconnecter</a>
-					</li>
-				{% else %}
-
+				{% if app.user == null %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{path('app_register')}}">M'inscrire</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{path('app_login')}}">Me connecter</a>
 					</li>
+				{% endif %}
+			</ul>
 
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				{% if is_granted ('ROLE_ADMIN') == false and app.user == true %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_profil')}}">Mon compte</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_logout')}}">Me déconnecter</a>
+					</li>
+				{% endif %}
+				{% if is_granted ('ROLE_ADMIN') %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_admin')}}">Dashboard Admin</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_logout')}}">Me déconnecter</a>
+					</li>
 				{% endif %}
 			</ul>
 		</div>

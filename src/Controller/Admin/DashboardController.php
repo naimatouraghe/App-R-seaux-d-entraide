@@ -19,7 +19,7 @@ class DashboardController extends AbstractDashboardController
 
     }
 
-    #[Route('/admin', name: 'admin')]
+    #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
         $url=$this->adminUrlGenerator->setController(CommentCrudController::class)->generateUrl();
@@ -36,6 +36,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::linkToRoute('Home', 'fa fa-home', 'app_home');
         yield MenuItem::section('Users');
         
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
