@@ -33,6 +33,7 @@ class Comment
     public function __construct()
     {
         $this->votes = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

@@ -7,7 +7,7 @@
 			<div class="s-post-summary--content">
 				{% for results in result %}
 					<h3 class="s-post-summary--content-title">
-						<a href="./post{id}" class="s-link">{{ results.question}}</a>
+						<a href="{{ path('app_post', {'id': results.id}) }}" class="s-link">{{ results.question}}</a>
 					</h3>
 
 					<div class="s-post-summary--content-excerpt">

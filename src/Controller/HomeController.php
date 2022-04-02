@@ -5,10 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route; 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Form\QuestionFormType;
+use App\Entity\Comment;
 use App\Entity\Post;
 
 class HomeController extends AbstractController
@@ -39,4 +40,31 @@ class HomeController extends AbstractController
             'questionForm' => $form->createView(),
         ]);
     }
+
+    #[Route('/post/{id}', name: 'app_post')]
+    public function comment(Request $request, EntityManagerInterface $entityManager, ManagerRegistry $doctrine, int $id): Response
+    {   
+        $user = $this->getUser();
+        $post = $doctrine->getRepository(Post::class)->find($id);
+        $comment = $post->getComments();
+        // $commentForm = $this->createForm(CommentFormType::class, $addComment);
+        // $commentForm->handleRequest($request);
+
+        $request = Request::createFromGlobals();
+        if($request->request->get('comment')){
+            $entityManager = $doctrine->getManager();
+            $addComment = new Comment();
+            $addComment->setContent($request->request->get('comment'));
+            $addComment->setUsers($user);
+            $addComment->setPosts($post);
+            $entityManager->persist($addComment);
+            $entityManager->flush();
+        }
+        return $this->render('Post/post.html.twig', [
+            'post' => $post,
+            'comment' => $comment,
+            'controller_name' => 'CommentController',
+        ]);
+    }
 }
+
