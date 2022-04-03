@@ -17,16 +17,34 @@ class ProfileController extends AbstractController
             'controller_name' => 'ProfileController',
         ]);
     }
+    
+    #[Route('/profil/posts', name: 'profil_posts')]
 
-    #[Route('/profil/posts', name: 'posts')]
-    public function posts(): Response
+
+    #[Route('/profil/posts/ajout', name: 'profil_posts_ajout')]
+    public function ajoutAnnonce(Request $request, ManagePicturesService $picturesService)
     {
+        $post = new Post;
 
-        return $this->render('profile/posts.html.twig', [
-            'controller_name' => 'Post de l\'utilisateur',
+        $form = $this->createForm(EditProfileType::class, $post);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $post->setUsers($this->getPost());
+            $post->setActive(false);
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            return $this->redirectToRoute('profil');
+        }
+
+        return $this->render('editprofile.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
-
 
     
 }

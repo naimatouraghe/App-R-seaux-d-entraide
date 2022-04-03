@@ -60,6 +60,7 @@ class HomeController extends AbstractController
             $entityManager->persist($addComment);
             $entityManager->flush();
         }
+        dd(app.user);
         return $this->render('Post/post.html.twig', [
             'post' => $post,
             'comment' => $comment,
