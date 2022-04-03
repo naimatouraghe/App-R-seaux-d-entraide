@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="{{path('app_home')}}">HelpApp</a>
+		<a class="navbar-brand" href="{{path('app_home')}}">ASKME</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -23,6 +23,9 @@
 				{% if is_granted ('ROLE_ADMIN') == false and app.user == true %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{path('app_profil')}}">Mon compte</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_profil')}}">Mes Posts</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{path('app_logout')}}">Me déconnecter</a>
