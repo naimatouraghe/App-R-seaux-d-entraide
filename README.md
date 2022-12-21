@@ -1,25 +1,40 @@
-# App-Web-Help-Request
-Développez la partie front end du distributeur de tickets pour les apprenants d'une promo. Les tickets représentent les demandes d'aide faites par les apprenants aux formateurs.
+# App-Réseau d'entraide 
+Créons un réseau d'entraide pour développeurs avec Symfony. 
 
 ## Ressources
 
-- [Maquette](https://simplonline-v3-prod.s3.eu-west-3.amazonaws.com/media/image/png/a8718cfb-2091-4eec-873b-f231a9289b67.png)
-- [API à utiliser](https://webhelprequest.deta.dev/)
+- [Symfony doc](https://symfony.com/doc/current/index.html)
+- [Le SOO avec Symfony](https://www.dev-web.io/2022/03/07/symfony-6-sauthentifier-avec-google-facebook-github/)
 
 
 ## Contexte du projet
 
-Rien ne va plus dans la promo, le formateur ne sait plus où donner de la tête, il explique mal ses briefs projet et tout le monde demande de l'aide. Il n'arrive plus à savoir qui a besoin d'aide et quand. Aidez le à répondre à ce problème en réalisant une interface front end qui permet de distribuer des tickets aux apprenants de sa promo.
+Vous êtes développeur PHP au sein de l'agence web SymfoLab.
 
-L'objectif est de s'inspirer de la maquette proposée en ressource ainsi que l'API Rest (voir la documentation de l'API) développée grâce au framework Express afin de permettre via le front end de :
+Votre client un jeune entrepreneur sorti d'école de développement souhaite créer un réseaux social pour professionnel du développement qui permet de poser des questions et des réponses à d'autres développeurs pour trouver de l'aide en ligne.
 
-- Créer des tickets en base de données 
-- Lister les tickets en cours (ceux qui ne sont pas résolus) 
-- Mettre à jour des tickets (une fois que la question est répondue) 
+Il vous a communiqué les éléments suivant :
+- La page principale devra afficher tous les messages précédents par ordre décroissant d'envoi
+- La page principale contient un formulaire permettant d'ajouter une question
+- Au click sur une question, une page s'ouvre affichant le contenu du post ainsi que ses commentaires
+- Sur la page d'un post, un formulaire permet d'ajouter un commentaire sur un post sur la page d'un post, on peut voter pour une réponse, une seule fois par question
+-L'application contient une page de connexion / inscription
 
-En bonus, l'interface front devra permettre de :
-- Gérer les apprenants dans la base de données 
-- Faire des statistiques sur les demandes (Par exemple : quel apprenant fait le plus de tickets ?)
+Les rôles suivant sont prévus dans l'application :
+- **Utilisateur déconnecté** : 
+
+il peut consulter la liste des derniers posts et afficher un post ainsi que ses commentaires. Il ne peut pas publier de post ou de commentaire
+- **Utilisateur connecté**: 
+
+il peut effectuer les actions de l'utilisateur connecté et peut en plus créer des posts et des commentaires et modifier son compte (avatar, nom, prénom, poste et mot de passe). Il peut aussi supprimer ses posts précédant, il peut aussi voter pour une réponse
+- **Administrateur**: 
+
+en plus de toutes les actions précédentes, l'administrateur peut modérer une question ou une réponse (elle reste en base de donnée mais n'est plus affichée), clore un thread (il n'est plus possible d'ajouter de réponse à un therad clôt) et supprimer un post ou une réponse et un utilisateur
+
+**Bonus :**
+
+Votre client aimerai qu'il soit possible de se connecter à l'aide de son compte github
+Le vote sur une réponse est géré à partir d'une requête ajax pour éviter le rechargement de la page
 
 ## Critères de performance
 
@@ -35,5 +50,6 @@ En bonus, l'interface front devra permettre de :
 
 ## Livrables
 
-- Depot github
-- Site en ligne
+- le dépôt GitHub de votre projet
+- le MCD de votre projet
+- le kanban contenant la gestion de votre projet
