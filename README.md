@@ -1,5 +1,5 @@
 # App-Web-Help-Request
-Développez en JavaScript la partie front end du distributeur de tickets pour les apprenants d'une promo. Les tickets représentent les demandes d'aide faites par les apprenants aux formateurs.
+Développez la partie front end du distributeur de tickets pour les apprenants d'une promo. Les tickets représentent les demandes d'aide faites par les apprenants aux formateurs.
 
 ## Ressources
 
@@ -13,9 +13,13 @@ Rien ne va plus dans la promo, le formateur ne sait plus où donner de la tête,
 
 L'objectif est de s'inspirer de la maquette proposée en ressource ainsi que l'API Rest (voir la documentation de l'API) développée grâce au framework Express afin de permettre via le front end de :
 
-Créer des tickets en base de données Lister les tickets en cours (ceux qui ne sont pas résolus) Mettre à jour des tickets (une fois que la question est répondue ^^) En bonus, l'interface front devra permettre de :
+- Créer des tickets en base de données 
+- Lister les tickets en cours (ceux qui ne sont pas résolus) 
+- Mettre à jour des tickets (une fois que la question est répondue) 
 
-Gérer les apprenants dans la base de données Faire des statistiques sur les demandes (Par exemple : quel apprenant fait le plus de tickets ?)
+En bonus, l'interface front devra permettre de :
+- Gérer les apprenants dans la base de données 
+- Faire des statistiques sur les demandes (Par exemple : quel apprenant fait le plus de tickets ?)
 
 ## Critères de performance
 
